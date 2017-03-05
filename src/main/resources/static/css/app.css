@@ -1,0 +1,33 @@
+body { 
+    padding-top: 70px; 
+}
+.sidebar {
+    max-height: 525px;
+    overflow-y:scroll; 
+}
+.container {
+    width: 100% !important
+}
+.data-grid {
+    width: auto;
+    height: auto;
+    color: black;
+}
+.ui-grid-footer-info {
+    color: #00dba3;
+    font-weight: bold;
+}
+.modal-dialog {
+    width: 80%;
+}
+.table {
+    word-wrap: break-word;
+}
+.breadcrumb {
+    color: #00dba3;
+    font-weight: bold;
+    font-style: italic;
+}
+json-tree .key {
+    color: #00dba3;
+}
