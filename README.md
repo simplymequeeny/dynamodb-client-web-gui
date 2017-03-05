@@ -17,11 +17,9 @@ These instructions will help you how to make the dynamodb-client-web-gui web app
 
 #### 1.) Download the latest release [executable jar](/releases/latest).
 
-Before running the dynamodb-client-web-gui web application you must choose which dynamodb you want to use or connect to.
+Before running the dynamodb-client-web-gui web application make sure that your AWS credentials file is in place.
 
 * **Using AWS DynamoDB**
-  
-Your credential must be in place before running 
 
 ```
 java -jar dynamodb-client-web-gui-1.0.0.jar
@@ -52,6 +50,7 @@ Wait for the web server to start up before connecting
 
 * [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - Programming Language
 * [Spring Boot](https://spring.io/guides/gs/spring-boot) - The web framework
+* [Mockito](http://site.mockito.org/) - Testing
 * [AngularJS 1](https://angularjs.org/) - Dynamic UI 
 * [AWS SDK](https://aws.amazon.com/documentation/dynamodb/) - API
 * [ui-grid](http://ui-grid.info/) - Data display
@@ -60,10 +59,6 @@ Wait for the web server to start up before connecting
 * [Maven](https://maven.apache.org/) - Dependency Management
 
 ## Contributing
-
-TBD
-
-## Versioning
 
 TBD
 
