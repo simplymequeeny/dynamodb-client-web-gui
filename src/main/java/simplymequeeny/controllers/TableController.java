@@ -1,12 +1,16 @@
 package simplymequeeny.controllers;
 
+import com.amazonaws.AmazonClientException;
 import com.amazonaws.services.dynamodbv2.document.internal.InternalUtils;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.TableDescription;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,39 +27,66 @@ public class TableController {
     private static final Logger LOGGER = LoggerFactory.getLogger(TableController.class);
 
     @Autowired
-    AwsDbClient dbClient;
+    private AwsDbClient dbClient;
 
     @RequestMapping("/names")
-    public @ResponseBody
+    public
+    @ResponseBody
     List<String> names() {
-        return dbClient.getTableNames();
+        List<String> names = Collections.EMPTY_LIST;
+
+        try {
+            names = dbClient.getTableNames();
+        } catch (AmazonClientException ex) {
+            LOGGER.error(ex.getMessage());
+        }
+
+        return names;
     }
 
     @RequestMapping("/describe/{name}")
-    public @ResponseBody
-    TableDescription definition(@PathVariable String name) {
+    public
+    @ResponseBody
+    TableDescription definition(@PathVariable String table) {
         TableDescription description = new TableDescription();
-        if (!dbClient.getTableNames().isEmpty())
-            description = dbClient.describeTable(name).getTable();
+
+        try {
+            if (!dbClient.getTableNames().isEmpty())
+                description = dbClient.describeTable(table).getTable();
+        } catch (AmazonClientException ex) {
+            LOGGER.error(ex.getMessage());
+        }
+
         return description;
     }
 
     @RequestMapping("/scan/{name}/items")
-    public @ResponseBody
-    List<Map<String, Object>> items(@PathVariable String name) {
-        LOGGER.info("Getting items for " + name);
-        ScanRequest scanRequest = new ScanRequest()
-                .withTableName(name);
+    public
+    @ResponseBody
+    List<Map<String, Object>> items(@PathVariable String table) {
+        LOGGER.info("Getting items for " + table);
         List<Map<String, Object>> list = new ArrayList<>();
-        dbClient.scan(scanRequest).getItems().stream().forEach(
-                (Map<String, AttributeValue> map) -> {
-            list.add(InternalUtils.toSimpleMapValue(map));
-        });
+
+        try {
+            ScanRequest scanRequest = new ScanRequest()
+                    .withTableName(table);
+
+            dbClient.scan(scanRequest).getItems().stream().forEach(
+                    (Map<String, AttributeValue> map) -> {
+                        list.add(InternalUtils.toSimpleMapValue(map));
+                    });
+        } catch (AmazonClientException ex) {
+            LOGGER.error(ex.getMessage());
+        }
+
+
         return list;
     }
-    
+
     @RequestMapping("/connection-type")
-    public @ResponseBody ConnectionType connectionType() {
+    public
+    @ResponseBody
+    ConnectionType connectionType() {
         return dbClient.getConnectionType();
     }
 }

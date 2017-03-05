@@ -1,9 +1,11 @@
 package simplymequeeny.dynamodb;
 
+import com.amazonaws.AmazonClientException;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
-import com.amazonaws.services.dynamodbv2.model.ResourceNotFoundException;
+
 import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -35,17 +37,11 @@ public class AwsDbClient extends AmazonDynamoDBClient {
         if (!ENDPOINT_URL.isEmpty()) {
             type = ConnectionType.LOCAL;
             withEndpoint(ENDPOINT_URL);
-        }        
-    }
-    
-    public List<String> getTableNames() {
-        try {
-            tableNames = listTables().getTableNames();
-        } catch (ResourceNotFoundException ex) {
-            LOGGER.error(ex.getMessage());
         }
+    }
 
-        return tableNames;
+    public List<String> getTableNames() throws AmazonClientException {
+        return listTables().getTableNames();
     }
 
     public ConnectionType getConnectionType() {
