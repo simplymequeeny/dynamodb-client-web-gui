@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/simplymequeeny/dynamodb-client-web-gui.svg?branch=master)](https://travis-ci.org/simplymequeeny/dynamodb-client-web-gui)
+[![codecov](https://codecov.io/gh/simplymequeeny/dynamodb-client-web-gui/branch/master/graph/badge.svg)](https://codecov.io/gh/simplymequeeny/dynamodb-client-web-gui)
 
 # dynamodb-client-web-gui
 A simple web client to view documents from AWS DynamoDB or DynamoDB Local
@@ -44,16 +45,17 @@ Wait for the web server to start up before connecting
 - [ ] Creating records
 - [ ] Updating records
 - [ ] Deleting records
-- [ ] Filetring records
+- [ ] Filtering records
+- [ ] Importing data from AWS DynamoDB]
 
 ## Built With
 
 * [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - Programming Language
 * [Spring Boot](https://spring.io/guides/gs/spring-boot) - The web framework
-* [Mockito](http://site.mockito.org/) - Testing
+* [Mockito](http://site.mockito.org/) - Unit testing
 * [AngularJS 1](https://angularjs.org/) - Dynamic UI 
 * [AWS SDK](https://aws.amazon.com/documentation/dynamodb/) - API
-* [ui-grid](http://ui-grid.info/) - Data display
+* [ui-grid](http://ui-grid.info/) - Grid data display
 * [angular-json-tree](https://github.com/awendland/angular-json-tree) - JSON Tree display
 * [Bootstrap](http://getbootstrap.com/) - UI
 * [Maven](https://maven.apache.org/) - Dependency Management
