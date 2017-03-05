@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/simplymequeeny/dynamodb-client-web-gui.svg?branch=master)](https://travis-ci.org/simplymequeeny/dynamodb-client-web-gui)
+
 # dynamodb-client-web-gui
 A simple web client to view documents from AWS DynamoDB or DynamoDB Local
 
