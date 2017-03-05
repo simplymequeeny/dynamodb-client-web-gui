@@ -13,29 +13,31 @@ These instructions will help you how to make the dynamodb-client-web-gui web app
 
 ### Running the dynamodb-client-web-gui Web Application
 
-#### 1.) Download the executable jar located in the dist folder.
+#### 1.) Download the latest release [executable jar](/releases/latest).
 
 Before running the dynamodb-client-web-gui web application you must choose which dynamodb you want to use or connect to.
 
-* Using AWS DynamoDB
+* **Using AWS DynamoDB**
   
 Your credential must be in place before running 
 
 ```
-java -jar dynamodb-client-web-gui.jar
+java -jar dynamodb-client-web-gui-1.0.0.jar
 ```
 
-* Using DynamoDB Local
+* **Using DynamoDB Local**
 
 Your Dynamodb Local must be up and running
 
 ```
-java -jar dynamodb-client-web-gui.jar --endpoint.url=[your dynamodb local endpoint]
+java -jar dynamodb-client-web-gui-1.0.0.jar --endpoint.url=[your dynamodb local endpoint]
 ```
 
 #### 2.) Open up a browser then go to http://localhost:9100
 
 Wait for the web server to start up before connecting
+
+#### 3.) Check [Wiki](https://github.com/simplymequeeny/dynamodb-client-web-gui/wiki) on how to use it
 
 ## TODO
 
