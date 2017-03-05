@@ -41,8 +41,10 @@ Wait for the web server to start up before connecting
 
 ## TODO
 
-* Create / Update / Delete records
-* Filter records
+- [ ] Creating records
+- [ ] Updating records
+- [ ] Deleting records
+- [ ] Filetring records
 
 ## Built With
 
@@ -71,7 +73,7 @@ See also the list of [contributors](https://github.com/simplymequeeny/dynamodb-c
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](/LICENSE) file for details
 
 ## Acknowledgments
 
