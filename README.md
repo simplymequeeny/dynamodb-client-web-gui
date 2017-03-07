@@ -16,7 +16,7 @@ These instructions will help you how to make the dynamodb-client-web-gui web app
 
 ### Running the dynamodb-client-web-gui Web Application
 
-#### 1.) Download the latest release [executable jar](/releases/latest).
+#### 1.) Download the latest release [executable jar](https://github.com/simplymequeeny/dynamodb-client-web-gui/releases/latest).
 
 Before running the dynamodb-client-web-gui web application make sure that your AWS credentials file is in place.
 
