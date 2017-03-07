@@ -61,6 +61,7 @@ public class TableControllerTest {
 
     @Test
     public void tableDefinitionShouldNotBeNull() {
+        ReflectionTestUtils.setField(tableController, "names", Arrays.asList(new String[]{"table1"}));
         when(amazonDynamoDB.describeTable("table1").getTable()).thenReturn(new TableDescription());
         Assert.notNull(tableController.definition("table1"));
     }

@@ -102,6 +102,14 @@
                         <format>xml</format>
                     </formats>
                     <check />
+                    <instrumentation>
+                        <ignores>
+                            <ignore>DynamoDbClientWebApplication.java</ignore>
+                        </ignores>
+                        <excludes>
+                            <exclude>simplymequeeny/DynamoDbClientWebApplication.class</exclude>
+                        </excludes>
+                    </instrumentation>
                 </configuration>
             </plugin>
         </plugins>
