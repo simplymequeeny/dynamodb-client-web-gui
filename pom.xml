@@ -3,7 +3,7 @@
     <groupId>simplymequeeny</groupId>
     <artifactId>dynamodb-client-web-gui</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
     <name>dynamodb-client-web-gui</name>
   
     <parent>
@@ -127,6 +127,6 @@
         <url>https://github.com/simplymequeeny/dynamodb-client-web-gui</url>
         <connection>scm:git:git://github.com/simplymequeeny/dynamodb-client-web-gui.git</connection>
         <developerConnection>scm:git:git@github.com:simplymequeeny/dynamodb-client-web-gui.git</developerConnection>
-      <tag>dynamodb-client-web-gui-1.0.1</tag>
+      <tag>HEAD</tag>
   </scm>    
 </project>
