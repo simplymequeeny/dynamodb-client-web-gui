@@ -21,7 +21,7 @@ app.controller('tables', function ($scope, $http, $uibModal) {
     $scope.showGrid = false;
     if (name !== undefined) {
       $scope.gridOptions = {
-        enableFiltering: false,
+        enableFiltering: true,
         flatEntityAccess: false,
         enableRowSelection: true,
         enableRowHeaderSelection: false,
