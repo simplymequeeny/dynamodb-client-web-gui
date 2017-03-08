@@ -114,6 +114,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <name>Temporary Staging Repository</name>
+            <url>file://${project.build.directory}/staging-repo</url>
+        </repository>
+    </distributionManagement>
     
     <scm>
         <url>https://github.com/simplymequeeny/dynamodb-client-web-gui</url>
