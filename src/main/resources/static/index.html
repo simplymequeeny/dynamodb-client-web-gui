@@ -69,16 +69,6 @@
         </div>
 
         <div class="panel-body" ng-if="tab('items')">
-          <!-- TODO filters
-          <div class="form-group">
-              <label for="globalSenondaryIndex">Global Secondary Index</label>
-              <select class="form-control" id="globalSenondaryIndex">
-                  <option value="{{gsi.indexName}}"
-                          ng-repeat="gsi in table.globalSecondaryIndexes">{{gsi.indexName}}
-                  </option>
-              </select>
-          </div>
-          -->
           <div id="grid1" ui-grid="gridOptions"
                ui-grid-selection
                ng-if="showGrid" class="data-grid"></div>
