@@ -4,50 +4,17 @@ var app = angular.module('dynamodb-web-gui',
 app.controller('ModalPopup', ModalPopup);
 app.controller('tables', function ($scope, $http, $uibModal) {
   var self = this;
-  
-  $scope.showGrid = false;
-  $scope.init = function () {
-    console.log('initializing ...');
-    $http.get('/names').then(function (response) {
-      console.log(response.data);
-      $scope.names = response.data;
-      selectedTab('items');
-      describe(response.data[0]);
-    });
-    
-    $http.get('/connection-type').then(function(response) {
-      console.log('connection type', response.data);
-      $scope.isLocal = response.data === 'LOCAL';
-    });
-  };
-  
+
+  var currentTab;
   var currentTable;
+
   var describe = function (name) {
     $scope.showGrid = false;
-    currentTable = name;
     console.log('retrieving table definition of ' + name);
     $http.get('/describe/' + name).then(function (response) {
       console.log(response.data);
       $scope.table = response.data;
-      scan(name);
     });
-  };
-
-  $scope.tbl = function (tab) {
-    var selected = tab === currentTable;
-    return selected;
-  };
-
-  var currentTab;
-  var selectedTab = function (tab) {
-    currentTab = tab;
-    if (tab === 'items')
-      scan(currentTable);
-  };
-
-  $scope.tab = function (tab) {
-    var selected = tab === currentTab;
-    return selected;
   };
 
   var scan = function (name, filter) {
@@ -104,8 +71,57 @@ app.controller('tables', function ($scope, $http, $uibModal) {
     }
   };
 
-  $scope.selectedTab = selectedTab;
-  $scope.describe = describe;
+  var tab = function (tab) {
+    var selected = tab === currentTab;
+    return selected;
+  };
+
+  var fetchData = function() {
+    console.log('fetching ...', currentTab);
+    if (tab('items') && $scope.isLocal) scan(currentTable);
+    else describe(currentTable);
+  };
+
+  $scope.selectedTab = function (tab) {
+    currentTab = tab;
+    fetchData();
+  };
+
+  $scope.selectedTable = function(table) {
+    currentTable = table;
+    fetchData();
+  };
+
+  $scope.showGrid = false;
+  $scope.tab = tab;
+
+  $scope.tbl = function (table) {
+    var selected = table === currentTable;
+    return selected;
+  };
+
+  $scope.fetchItems = function() {
+    scan(currentTable);
+  };
+
+  $scope.init = function () {
+    console.log('initializing ...');
+    $http.get('/connection-type').then(function(response) {
+      console.log('connection type', response.data);
+      $scope.isLocal = response.data === 'LOCAL';
+
+       $http.get('/names').then(function (response) {
+        console.log(response.data);
+        $scope.names = response.data;
+
+        currentTab = 'items';
+        currentTable = response.data[0];
+
+        console.log('is local?', $scope.isLocal);
+        if ($scope.isLocal) scan(currentTable);
+       });
+    });
+  };
 
   $scope.init();
 });
