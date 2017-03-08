@@ -5,47 +5,39 @@
 A simple web client to view documents from AWS DynamoDB or DynamoDB Local
 
 ## Getting Started
-
 These instructions will help you how to make the dynamodb-client-web-gui web application running.
 
 ### Prerequisites
-
 * Java 8 or newer
-* [AWS Credentials File](http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html) (if connecting to AWS DynamoDB) 
 * DynamoDB Local Jar [Download & Setup](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html)
+* [AWS Credentials File](http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html) (if connecting to AWS DynamoDB) 
 
 ### Running the dynamodb-client-web-gui Web Application
-
 #### 1.) Download the latest release [executable jar](https://github.com/simplymequeeny/dynamodb-client-web-gui/releases/latest).
 
-Before running the dynamodb-client-web-gui web application make sure that your AWS credentials file is in place.
-
-* **Using AWS DynamoDB**
-
-```
-java -jar dynamodb-client-web-gui-1.0.0.jar
-```
-
 * **Using DynamoDB Local**
-
 Your Dynamodb Local must be up and running
 
 ```
 java -jar dynamodb-client-web-gui-1.0.0.jar --endpoint.url=[your dynamodb local endpoint]
 ```
 
-#### 2.) Open up a browser then go to http://localhost:9100
+* **Using AWS DynamoDB**
+Before running the dynamodb-client-web-gui web application make sure that your AWS credentials file is in place.
 
+```
+java -jar dynamodb-client-web-gui-1.0.0.jar [--profile=<aws profile>]
+```
+
+#### 2.) Open up a browser then go to http://localhost:9100
 Wait for the web server to start up before connecting
 
 #### 3.) Check [Wiki](https://github.com/simplymequeeny/dynamodb-client-web-gui/wiki) on how to use it
 
 ## TODO
-
 - [ ] Creating records
 - [ ] Updating records
 - [ ] Deleting records
-- [ ] Filtering records
 - [ ] Importing data from AWS DynamoDB]
 
 ## Built With
@@ -84,7 +76,7 @@ mvn clean spring-boot:run [-Drun.arguments="---profile=<profile>"]
 ```
 * if using DynamoDB Local, start your DynamoDB server first
 ```$xslt
-mvn clean spring-boot:run -Drun.arguments="--endpoint.url=<your dynamodb url>[,--profile=<profile>]"
+mvn clean spring-boot:run -Drun.arguments="--endpoint.url=<your dynamodb url>"
 ``````
 ##### Open up a browser and navigate to http://localhost:9100
 ##### Execute all tests with code coverage
@@ -100,11 +92,14 @@ mvn cobertura:cobertura
 
 Thanks!
 
-## Authors
+## Author
 
 * **Quennie Teves** - *Initial work* - [simplymequeeny](https://github.com/simplymequeeny)
 
 See also the list of [contributors](https://github.com/simplymequeeny/dynamodb-client-web-gu/contributors) who participated in this project.
+
+## Motivation
+I started this web application because I use DynamoDBLocal during the development and testing stages of the ReST WS project that I am involved with.
 
 ## License
 
