@@ -112,7 +112,10 @@
                 <version>3.11.1</version>
                 <configuration>
                     <propertiesPath>${basedir}/versioneye.properties</propertiesPath>
-                    <updatePropertiesAfterCreate>false</updatePropertiesAfterCreate>
+                    <projectId>58cabd7b78d56e0012946cb5</projectId>
+                    <visibility>public</visibility>
+                    <updatePropertiesAfterCreate>true</updatePropertiesAfterCreate>
+                    <transitiveDependencies>true</transitiveDependencies>
                 </configuration>
             </plugin>
         </plugins>
