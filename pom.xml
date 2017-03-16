@@ -1,24 +1,25 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>simplymequeeny</groupId>
     <artifactId>dynamodb-client-web-gui</artifactId>
     <packaging>jar</packaging>
     <version>1.0.4-SNAPSHOT</version>
     <name>dynamodb-client-web-gui</name>
-  
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.2.RELEASE</version>
     </parent>
-    
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <angularjs.version>1.6.2</angularjs.version>
         <jasmine.version>2.5.0</jasmine.version>
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>com.amazonaws</groupId>
@@ -28,7 +29,7 @@
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-dynamodb</artifactId>
         </dependency>
-  
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -62,7 +63,7 @@
             <type>jar</type>
         </dependency>
     </dependencies>
-    
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -74,7 +75,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    
+
     <build>
         <plugins>
             <plugin>
@@ -84,7 +85,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
-               <version>2.5.3</version>
+                <version>2.5.3</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -95,7 +96,7 @@
                         <format>html</format>
                         <format>xml</format>
                     </formats>
-                    <check />
+                    <check/>
                     <instrumentation>
                         <ignores>
                             <ignore>DynamoDbClientWebApplication.java</ignore>
@@ -114,7 +115,6 @@
                     <propertiesPath>${basedir}/versioneye.properties</propertiesPath>
                     <projectId>58cabd7b78d56e0012946cb5</projectId>
                     <visibility>public</visibility>
-                    <updatePropertiesAfterCreate>true</updatePropertiesAfterCreate>
                     <transitiveDependencies>true</transitiveDependencies>
                 </configuration>
             </plugin>
@@ -128,11 +128,11 @@
             <url>file://${project.build.directory}/staging-repo</url>
         </repository>
     </distributionManagement>
-    
+
     <scm>
         <url>https://github.com/simplymequeeny/dynamodb-client-web-gui</url>
         <connection>scm:git:git://github.com/simplymequeeny/dynamodb-client-web-gui.git</connection>
         <developerConnection>scm:git:git@github.com:simplymequeeny/dynamodb-client-web-gui.git</developerConnection>
-      <tag>dynamodb-client-web-gui-1.0.2</tag>
-  </scm>    
+        <tag>dynamodb-client-web-gui-1.0.2</tag>
+    </scm>
 </project>
