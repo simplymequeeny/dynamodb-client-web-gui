@@ -5,6 +5,7 @@ import com.amazonaws.ResponseMetadata;
 import com.amazonaws.regions.Region;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.model.*;
+import com.amazonaws.services.dynamodbv2.waiters.AmazonDynamoDBWaiters;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -102,6 +103,11 @@ public class StubAmazonDynamoDBClient implements AmazonDynamoDB {
     }
 
     @Override
+    public DescribeTimeToLiveResult describeTimeToLive(DescribeTimeToLiveRequest describeTimeToLiveRequest) {
+        return null;
+    }
+
+    @Override
     public GetItemResult getItem(GetItemRequest getItemRequest) {
         return null;
     }
@@ -138,6 +144,11 @@ public class StubAmazonDynamoDBClient implements AmazonDynamoDB {
 
     @Override
     public ListTablesResult listTables(Integer integer) {
+        return null;
+    }
+
+    @Override
+    public ListTagsOfResourceResult listTagsOfResource(ListTagsOfResourceRequest listTagsOfResourceRequest) {
         return null;
     }
 
@@ -182,6 +193,16 @@ public class StubAmazonDynamoDBClient implements AmazonDynamoDB {
     }
 
     @Override
+    public TagResourceResult tagResource(TagResourceRequest tagResourceRequest) {
+        return null;
+    }
+
+    @Override
+    public UntagResourceResult untagResource(UntagResourceRequest untagResourceRequest) {
+        return null;
+    }
+
+    @Override
     public UpdateItemResult updateItem(UpdateItemRequest updateItemRequest) {
         return null;
     }
@@ -207,12 +228,22 @@ public class StubAmazonDynamoDBClient implements AmazonDynamoDB {
     }
 
     @Override
+    public UpdateTimeToLiveResult updateTimeToLive(UpdateTimeToLiveRequest updateTimeToLiveRequest) {
+        return null;
+    }
+
+    @Override
     public void shutdown() {
 
     }
 
     @Override
     public ResponseMetadata getCachedResponseMetadata(AmazonWebServiceRequest amazonWebServiceRequest) {
+        return null;
+    }
+
+    @Override
+    public AmazonDynamoDBWaiters waiters() {
         return null;
     }
 }
