@@ -9,14 +9,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.1.RELEASE</version>
+        <version>1.5.2.RELEASE</version>
     </parent>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <angularjs.version>1.4.9</angularjs.version>
-        <jasmine.version>2.0.0</jasmine.version>
+        <angularjs.version>1.6.2</angularjs.version>
+        <jasmine.version>2.5.0</jasmine.version>
     </properties>
     
     <dependencies>
@@ -36,12 +36,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.14</version>
         </dependency>
 
         <dependency>
@@ -74,7 +68,7 @@
             <dependency>
                 <groupId>com.amazonaws</groupId>
                 <artifactId>aws-java-sdk-bom</artifactId>
-                <version>1.11.22</version>
+                <version>1.11.105</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -110,6 +104,15 @@
                             <exclude>simplymequeeny/DynamoDbClientWebApplication.class</exclude>
                         </excludes>
                     </instrumentation>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.versioneye</groupId>
+                <artifactId>versioneye-maven-plugin</artifactId>
+                <version>3.11.1</version>
+                <configuration>
+                    <propertiesPath>${basedir}/versioneye.properties</propertiesPath>
+                    <updatePropertiesAfterCreate>false</updatePropertiesAfterCreate>
                 </configuration>
             </plugin>
         </plugins>

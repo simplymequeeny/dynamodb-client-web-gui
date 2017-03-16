@@ -2,3 +2,5 @@
 pom.xml.releaseBackup
 .idea
 dynamodb-client-web-gui.iml
+c:
+src/main/resources/versioneye.properties
