@@ -38,6 +38,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -113,6 +127,7 @@
                 <version>3.11.1</version>
                 <configuration>
                     <propertiesPath>${basedir}/versioneye.properties</propertiesPath>
+                    <name>DynamoDB Client Web GUI</name>
                     <projectId>58cabd7b78d56e0012946cb5</projectId>
                     <visibility>public</visibility>
                     <transitiveDependencies>true</transitiveDependencies>
