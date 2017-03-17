@@ -1,11 +1,10 @@
 package simplymequeeny.controllers;
 
+import com.amazonaws.AmazonClientException;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
-import com.amazonaws.services.dynamodbv2.model.AmazonDynamoDBException;
-import com.amazonaws.services.dynamodbv2.model.AttributeValue;
-import com.amazonaws.services.dynamodbv2.model.ScanRequest;
-import com.amazonaws.services.dynamodbv2.model.TableDescription;
+import com.amazonaws.services.dynamodbv2.model.*;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Answers;
@@ -23,6 +22,7 @@ import simplymequeeny.services.HelperService;
 
 import java.util.*;
 
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -35,6 +35,8 @@ public class TableControllerTest {
     @Mock
     private ScanRequest scanRequest;
 
+    private ScanResult scanResult;
+
     @Autowired
     private HelperService helperService;
 
@@ -45,6 +47,7 @@ public class TableControllerTest {
     @Before
     public void setup() {
         Mockito.reset(amazonDynamoDB);
+        scanResult = new ScanResult();
     }
 
     @Test
@@ -82,21 +85,21 @@ public class TableControllerTest {
     @Test
     public void itemsShouldNotBeEmpty() throws Exception {
         Map<String, AttributeValue> data = new HashMap<>();
-        data.put("key1", new AttributeValue());
+        data.put("key1", new AttributeValue("value1"));
 
         List<Map<String, AttributeValue>> list = new ArrayList<>();
         list.add(data);
 
-        when(amazonDynamoDB.scan(new ScanRequest()).getItems()).thenReturn(list);
+        when(amazonDynamoDB.scan(scanRequest).getItems()).thenReturn(list);
         // no idea why .getItems not being stubbed
-        //Assert.notEmpty(tableController.items("table1"));
+        Assert.notEmpty(tableController.items("table1"));
     }
 
     @Test
-    public void itemsShouldBeEmpty() throws Exception {
-        when(amazonDynamoDB.scan(new ScanRequest()).getItems()).thenThrow(new AmazonDynamoDBException("test"));
+    public void itemsShouldBeEmptyWhenTableHasNoData() throws Exception {
+        List<Map<String, AttributeValue>> list = new ArrayList<>();
+        when(amazonDynamoDB.scan(scanRequest).getItems()).thenReturn(list);
         org.junit.Assert.assertEquals(Collections.EMPTY_LIST, tableController.items("table1"));
-        // not throwing exception
     }
 
     @Test

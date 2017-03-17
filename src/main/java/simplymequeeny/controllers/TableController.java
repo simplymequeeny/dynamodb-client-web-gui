@@ -32,6 +32,9 @@ public class TableController {
     @Autowired
     private AmazonDynamoDB amazonDynamoDBClient;
 
+    @Autowired
+    private ScanRequest scanRequest;
+
     private List<String> names;
 
     @RequestMapping("/names")
@@ -71,18 +74,13 @@ public class TableController {
     List<Map<String, Object>> items(@PathVariable String table) {
         LOGGER.info("Getting items for " + table);
         List<Map<String, Object>> items = new ArrayList<>();
-        ScanRequest scanRequest = new ScanRequest().withTableName(table);
+        scanRequest.withTableName(table);
 
-        try {
-            List<Map<String, AttributeValue>> list = amazonDynamoDBClient.scan(scanRequest).getItems();
-            LOGGER.info("raw items ", list);
-            for (Map<String, AttributeValue> item : list) {
-                items.add(InternalUtils.toSimpleMapValue(item));
-            }
-        } catch (AmazonClientException ex) {
-            LOGGER.error(ex.getMessage());
+        List<Map<String, AttributeValue>> list = amazonDynamoDBClient.scan(scanRequest).getItems();
+        LOGGER.info("raw items ", list);
+        for (Map<String, AttributeValue> item : list) {
+            items.add(InternalUtils.toSimpleMapValue(item));
         }
-
 
         return items;
     }
