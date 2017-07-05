@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>simplymequeeny</groupId>
     <artifactId>dynamodb-client-web-gui</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.6-SNAPSHOT</version>
     <name>dynamodb-client-web-gui</name>
 
     <parent>
@@ -110,7 +109,7 @@
                         <format>html</format>
                         <format>xml</format>
                     </formats>
-                    <check/>
+                    <check />
                     <instrumentation>
                         <ignores>
                             <ignore>DynamoDbClientWebApplication.java</ignore>
