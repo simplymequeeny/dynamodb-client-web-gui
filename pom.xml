@@ -127,7 +127,6 @@
                 <configuration>
                     <propertiesPath>${basedir}/versioneye.properties</propertiesPath>
                     <name>DynamoDB Client Web GUI</name>
-                    <projectId>58cabd7b78d56e0012946cb5</projectId>
                     <visibility>public</visibility>
                     <transitiveDependencies>true</transitiveDependencies>
                 </configuration>
