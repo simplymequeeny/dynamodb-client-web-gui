@@ -144,7 +144,7 @@
 
     <scm>
         <url>https://github.com/simplymequeeny/dynamodb-client-web-gui</url>
-        <connection>scm:git:git://github.com/simplymequeeny/dynamodb-client-web-gui.git</connection>
+        <connection>scm:git:git@github.com:simplymequeeny/dynamodb-client-web-gui.git</connection>
         <developerConnection>scm:git:git@github.com:simplymequeeny/dynamodb-client-web-gui.git</developerConnection>
         <tag>dynamodb-client-web-gui-1.0.2</tag>
     </scm>
