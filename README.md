@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/simplymequeeny/dynamodb-client-web-gui.svg?branch=master)](https://travis-ci.org/simplymequeeny/dynamodb-client-web-gui)
 [![codecov](https://codecov.io/gh/simplymequeeny/dynamodb-client-web-gui/branch/master/graph/badge.svg)](https://codecov.io/gh/simplymequeeny/dynamodb-client-web-gui)
-[![Dependency Status](https://www.versioneye.com/user/projects/595d2bd9368b08001a37dc0a/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/595d2bd9368b08001a37dc0a)
+[![Dependency Status](https://www.versioneye.com/user/projects/595e7ea3368b08000ea483d6/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/595e7ea3368b08000ea483d6)
 
 # dynamodb-client-web-gui
 A simple web client to view documents from AWS DynamoDB or DynamoDB Local
