@@ -1,6 +1,7 @@
 body { 
     padding-top: 70px; 
 }
+
 .sidebar {
     max-height: 525px;
     overflow-y:scroll; 
@@ -9,8 +10,8 @@ body {
     width: 100% !important
 }
 .data-grid {
-    width: auto;
-    height: auto;
+    width: 100%;
+    height: 400px;
     color: black;
 }
 .ui-grid-footer-info {
