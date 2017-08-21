@@ -1,5 +1,5 @@
 var app = angular.module('dynamodb-web-gui', 
-  ['ui.bootstrap', 'ui.grid', 'ui.grid.selection','angular-json-tree']);
+  ['ui.bootstrap', 'ui.grid', 'ui.grid.selection','ui.grid.exporter','angular-json-tree']);
 
 app.controller('ModalPopup', ModalPopup);
 app.controller('tables', function ($scope, $http, $uibModal) {
@@ -21,6 +21,9 @@ app.controller('tables', function ($scope, $http, $uibModal) {
     $scope.showGrid = false;
     if (name !== undefined) {
       $scope.gridOptions = {
+        enableGridMenu: true,
+        exporterMenuPdf: false,
+        exporterCsvFilename: 'exports.csv',
         enableFiltering: true,
         flatEntityAccess: false,
         enableRowSelection: true,
@@ -30,6 +33,7 @@ app.controller('tables', function ($scope, $http, $uibModal) {
         multiSelect: false,
         modifierKeysToMultiSelect: false,
         noUnselect: true,
+        exporterCsvLinkElement: angular.element(document.querySelectorAll(".custom-csv-link-location")),
         onRegisterApi: function (gridApi) {
           $scope.gridApi = gridApi;
         },
