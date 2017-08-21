@@ -91,8 +91,8 @@ app.controller('tables', function ($scope, $http, $uibModal) {
     fetchData();
   };
 
-  $scope.selectedTable = function(table) {
-    currentTable = table;
+  $scope.selectedTable = function() {
+    currentTable = $scope.selectedTableItem;
     fetchData();
   };
 
@@ -109,17 +109,19 @@ app.controller('tables', function ($scope, $http, $uibModal) {
   };
 
   $scope.init = function () {
+    $scope.selectedTableItem = null;
+
     console.log('initializing ...');
     $http.get('/connection-type').then(function(response) {
       console.log('connection type', response.data);
       $scope.isLocal = response.data === 'LOCAL';
 
        $http.get('/names').then(function (response) {
-        console.log(response.data);
+        console.log('tables', response.data);
         $scope.names = response.data;
 
         currentTab = 'items';
-        currentTable = response.data[0];
+        //currentTable = response.data[0];
 
         console.log('is local?', $scope.isLocal);
         if ($scope.isLocal) scan(currentTable);

@@ -13,26 +13,44 @@
 <body ng-app="dynamodb-web-gui" class="container" ng-controller="tables">
   <header class="navbar navbar-default navbar-fixed-top">
     <a class="navbar-brand pull-left">DynamoDB Client Web GUI</a>
+    <div class='btn-toolbar pull-right'>
+      <div class='btn-group'>
+        <a href="http://github.com/simplymequeeny" class='btn btn-primary'>simplymequeeny</a>
+      </div>
+    </div>
   </header>
 
   <section class="container">
     <div class="row">
-      <div class="col-lg-2 sidebar">
-        <div class="list-group" ng-if="names.length > 0">
-          <button type="button" class="list-group-item"
-                  ng-class="{active:tbl(name)}"
-                  ng-click="selectedTable(name)" ng-repeat="name in names">
-            {{name}}
-          </button>
+      <div class="input-group-sm form-group-sm">
+        <div class="pull-right">
+            <span ng-if="isLocal" class="label label-danger">
+              DynamoDB Local
+            </span>
+
+            <span ng-if="!isLocal" class="label label-danger">
+              AWS DynamoDB
+            </span>
         </div>
-        <div class="list-group" ng-if="names.length == 0">
-          <button type="button" class="list-group-item">
-            No Tables
-          </button>
-        </div>
+
+        <form name="myForm">
+          <label for="repeatSelect"> Table: </label>
+          <select class="form-control small" name="repeatSelect" id="repeatSelect"
+                  ng-model="selectedTableItem" ng-change="selectedTable()">
+            <option value="">---Please select---</option>
+            <option ng-repeat="name in names" value="{{name}}">{{name}}</option>
+          </select>
+
+          <a ng-if="!isLocal && tab('items') && selectedTableItem"
+             class="pull-right btn btn-success btn-fetch btn-sm"
+             ng-click="fetchItems()" style="margin-top: 5px;">
+            <strong>FETCH DATA</strong>
+          </a>
+        </form>
       </div>
 
-      <div class="col-lg-10 pull-right bs-component sidebar">
+      <div ng-if="selectedTableItem" class="col-lg-12 bs-component">
+        <hr>
         <ul class="nav nav-pills">
           <li ng-class="{active:tab('items')}" ng-if="names.length > 0"
               ng-click="selectedTab('items')">
@@ -41,21 +59,6 @@
           <li ng-class="{active:tab('details')}" ng-if="names.length > 0"
               ng-click="selectedTab('details')">
             <a href="">Details</a>
-          </li>
-          <li class="pull-right">
-            <span ng-if="isLocal" class="label label-danger">
-              DynamoDB Local
-            </span>
-
-            <span ng-if="!isLocal" class="label label-danger">
-              AWS DynamoDB
-            </span>
-
-            <a ng-if="!isLocal && tab('items')" class="label label-success btn-fetch"
-               ng-click="fetchItems()" style="margin-top: 5px;">
-              <strong>FETCH DATA</strong>
-            </a>
-
           </li>
         </ul>
 
@@ -76,16 +79,6 @@
       </div>
     </div>
   </section>
-
-  <footer class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container">
-      <div class="navbar-header">
-        <a href=https://github.com/simplymequeeny" class="navbar-brand">
-          simplymequeeny
-        </a>
-      </div>
-    </div>
-  </footer>
 
   <script type="text/ng-template" class="modal-dialog" id="modal-popup.html">
     <div class="modal-header">
