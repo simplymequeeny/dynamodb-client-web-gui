@@ -1,8 +1,9 @@
 var app = angular.module('dynamodb-web-gui', 
-  ['ui.bootstrap', 'ui.grid', 'ui.grid.selection','ui.grid.exporter','angular-json-tree']);
+  ['ui.bootstrap', 'ngAnimate', 'ngTouch', 'ui.grid', 'ui.grid.selection','ui.grid.exporter',
+      'ui.grid.importer','angular-json-tree']);
 
 app.controller('ModalPopup', ModalPopup);
-app.controller('tables', function ($scope, $http, $uibModal) {
+app.controller('tables', function ($scope, $http, $interval, $uibModal) {
   var self = this;
 
   var currentTab;
@@ -17,7 +18,7 @@ app.controller('tables', function ($scope, $http, $uibModal) {
     });
   };
 
-  var scan = function (name, filter) {
+  var scan = function (name) {
     $scope.showGrid = false;
     if (name !== undefined) {
       $scope.gridOptions = {
@@ -34,6 +35,9 @@ app.controller('tables', function ($scope, $http, $uibModal) {
         modifierKeysToMultiSelect: false,
         noUnselect: true,
         exporterCsvLinkElement: angular.element(document.querySelectorAll(".custom-csv-link-location")),
+        importerDataAddCallback : function ( grid, newObjects ) {
+          $scope.gridOptions.data = $scope.gridOptions.data.concat( newObjects );
+        },
         onRegisterApi: function (gridApi) {
           $scope.gridApi = gridApi;
         },
@@ -67,8 +71,27 @@ app.controller('tables', function ($scope, $http, $uibModal) {
                 "</div>"
       };
 
+      if (!$scope.isLocal) {
+          $scope.gridOptions.importerShowMenu = false;
+      }
+
       $http.get('/scan/' + name + '/items').then(function (response) {
-        console.log('scanned items', response.data);
+        console.log('scanned items', response.data)
+
+        var keys = Object.keys(response.data[0]);
+        var columns = [];
+        for (var i = 0; i < keys.length; i++) {
+            var columnName = keys[i]
+                .replace(/([A-Z])/g, ' $1')
+                .replace(/^./, function(str){ return str.toUpperCase(); });
+            columns.push(
+                {
+                    name: columnName,
+                    field: keys[i]
+                });
+        }
+
+        $scope.gridOptions.columnDefs = columns;
         $scope.gridOptions.data = response.data;
         $scope.showGrid = true;
       });
@@ -121,7 +144,6 @@ app.controller('tables', function ($scope, $http, $uibModal) {
         $scope.names = response.data;
 
         currentTab = 'items';
-        //currentTable = response.data[0];
 
         console.log('is local?', $scope.isLocal);
         if ($scope.isLocal) scan(currentTable);

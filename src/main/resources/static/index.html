@@ -73,7 +73,7 @@
 
         <div class="panel-body" ng-if="tab('items')">
           <div id="grid1" ui-grid="gridOptions"
-               ui-grid-selection ui-grid-exporter
+               ui-grid-selection ui-grid-exporter ui-grid-importer
                ng-if="showGrid" class="data-grid"></div>
         </div>
       </div>
@@ -98,7 +98,10 @@
     </div>
   </script>
 
-  <script src="lib/js/angular.min.js"></script>
+  <script src="lib/js/angular.js"></script>
+  <script src="lib/js/angular-touch.js"></script>
+  <script src="lib/js/angular-animate.js"></script>
+  <script src="lib/js/csv.js"></script>
   <script src="lib/js/ui-bootstrap-tpls-2.5.0.js"></script>
   <script src="lib/js/ui-grid.min.js"></script>
   <script src="lib/js/angular-json-tree.min.js"></script>
