@@ -35,12 +35,6 @@ Wait for the web server to start up before connecting
 
 #### 3.) Check [Wiki](https://github.com/simplymequeeny/dynamodb-client-web-gui/wiki) on how to use it
 
-## TODO
-- [ ] Creating records
-- [ ] Updating records
-- [ ] Deleting records
-- [ ] Importing data from AWS DynamoDB]
-
 ## Built With
 
 * [Java 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - Programming Language
