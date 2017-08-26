@@ -13,6 +13,11 @@ These instructions will help you how to make the dynamodb-client-web-gui web app
 * DynamoDB Local Jar [Download & Setup](http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html)
 * [AWS Credentials File](http://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html) (if connecting to AWS DynamoDB) 
 
+### Features
+* View documents from DynamoDBLocal or AWS DynamoDB
+* Export Data to CSV file
+* Import CSV file (on DynamoDBLocal only)
+
 ### Running the dynamodb-client-web-gui Web Application
 #### 1.) Download the latest release [executable jar](https://github.com/simplymequeeny/dynamodb-client-web-gui/releases/latest).
 
